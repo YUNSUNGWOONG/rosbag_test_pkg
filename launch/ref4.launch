@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- rosbag파일이랑 파이썬 스크립트가 독립적으로 실행되는 예제코드 -->
+<launch>
+  <!-- rosbag play -->
+  <node pkg="rosbag" type="play" name="rosbag_play" args="$(find rosbag_test_pkg)/bags/test.bag --loop" output="screen"/>
+  
+  <!-- srcipts -->
+  <!-- src -->
+  <node pkg="rosbag_test_pkg" type="play_bag.py" name="visual_rviz_node" output="screen"/>
+
+  <!-- rviz -->
+  <node pkg="rviz" type="rviz" name="rviz_node" args="-d $(find rosbag_test_pkg)/rviz/rviz_config.rviz" />
+  
+  <!-- rqt_graph -->
+  <node name="rqt" pkg="rqt_graph" type="rqt_graph"/>  
+</launch>
+
+

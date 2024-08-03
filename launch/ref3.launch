@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 파이썬파일 안거치고 그냥 독립적으로 rosbag이 실행되는 예제코드 -->
+<launch>
+  <!-- rosbag play -->
+  <node pkg="rosbag" type="play" name="rosbag_play" args="$(find rosbag_test_pkg)/bags/test.bag --loop" output="screen"/>
+  
+  <!-- rviz -->
+  <node pkg="rviz" type="rviz" name="rviz_node" args="-d $(find rosbag_test_pkg)/rviz/rviz_config.rviz" />
+  
+  <!-- rqt_graph -->
+  <node name="rqt" pkg="rqt_graph" type="rqt_graph"/>  
+</launch>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 무한루프가 rough하게 재생되는 예제코드 -->
+<launch>
+  <!-- rosbag play -->
+  <node pkg="rosbag" type="play" name="rosbag_play" args="$(find rosbag_test_pkg)/bags/test.bag" output="screen"/>
+  
+  <!-- srcipts -->
+  <!-- src -->
+  <node pkg="rosbag_test_pkg" type="play_bag.py" name="visual_rviz_node" output="screen"/>
+  
+  <!-- rviz -->
+  <node pkg="rviz" type="rviz" name="rviz_node" args="-d $(find rosbag_test_pkg)/rviz/rviz_config.rviz" />
+  
+  <!-- rqt_graph -->
+  <node name="rqt" pkg="rqt_graph" type="rqt_graph"/>  
+</launch>

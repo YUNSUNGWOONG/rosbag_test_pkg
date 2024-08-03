@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 무한루프가 smooth하게 재생되는 예제코드 -->
+<launch>
+  <!-- play_bag.py script -->
+  <node pkg="rosbag_test_pkg" type="play_bag.py" name="visual_rviz_node" output="screen"/>
+  
+  <!-- rviz -->
+  <node pkg="rviz" type="rviz" name="rviz_node" args="-d $(find rosbag_test_pkg)/rviz/rviz_config.rviz" />
+  
+  <!-- rqt_graph -->
+  <node name="rqt" pkg="rqt_graph" type="rqt_graph"/>  
+</launch>
